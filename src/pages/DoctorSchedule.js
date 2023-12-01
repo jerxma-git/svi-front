@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { fetchDoctorInfo, fetchDoctorAppointments } from '../api/doctor'; // Mocked API functions for fetching doctor info and appointments
+import { fetchDoctorInfo, fetchDoctorAppointments } from '../api/doctors'; // Mocked API functions for fetching doctor info and appointments
 
 const DoctorSchedule = ({ doctorId }) => {
 
@@ -10,10 +10,15 @@ const DoctorSchedule = ({ doctorId }) => {
     const fetchData = async () => {
       try {
         const doctorInformation = await fetchDoctorInfo(doctorId);
-        setDoctorInfo(doctorInformation);
+        if (doctorInformation != null) {
+          setDoctorInfo(doctorInformation);
+        }
 
         const doctorAppointments = await fetchDoctorAppointments(doctorId);
-        setAppointments(doctorAppointments);
+        if (doctorAppointments != null) {
+          setAppointments(doctorAppointments);
+        }
+        
       } catch (error) {
         console.error('Error fetching doctor data:', error);
       }

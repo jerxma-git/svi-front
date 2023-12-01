@@ -8,16 +8,14 @@ import Login from './components/auth/Login';
 import DoctorSchedule from './pages/DoctorSchedule';
 
 function App() {
-  
-  const [userToken, setUserToken] = useState(null);
-
-  const handleLogin = (token) => {
-    setUserToken(token);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const handleLogin = () => {
+    setIsAuthenticated(true);
   }
 
   return (
     <div>
-      {!userToken  
+      {!isAuthenticated  
         ? (<Login onLogin={handleLogin}/>) 
         : (
         <Router>

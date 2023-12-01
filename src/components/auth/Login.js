@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { loginUser } from '../../api/auth';
+import { authenticate } from '../../api/base';
 
 const Login = ({ onLogin }) => {
   const [username, setUsername] = useState('');
@@ -11,14 +11,17 @@ const Login = ({ onLogin }) => {
 
     try {
       const credentials = { username, password };
-      const response = await loginUser(credentials);
 
-      if (response.success) {
-        onLogin(response.token); 
-        // у нас вроде в куках JSESSION передается токен и аутентификация по сессиям 
-      } else {
-        setError(response.error);
-      }
+      const response = await authenticate(credentials)
+      
+      const userId = response.data.id;
+
+      localStorage.setItem("userId", userId);
+      localStorage.setItem("username", username);
+      localStorage.setItem("password", password);
+      onLogin();
+
+
     } catch (error) {
       console.error('Error during login:', error);
       setError('An error occurred during login.');

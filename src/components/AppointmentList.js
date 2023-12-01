@@ -1,32 +1,24 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { fetchClientOwnAppointments } from '../api/clients';
 
 const AppointmentList = () => {
 
     // todo rm
-  const appointments = [
-    {
-      id: 1,
-      clientInfo: {
-        id: 3,
-        firstName: 'Ivan',
-        lastName: 'Ivanov',
-        middleName: 'Ivanovich',
-        email: 'ivan@243gm3sdfail.com',
-        dateOfBirth: '11.11.2001',
-      },
-      doctorInfo: {
-        id: 2,
-        firstName: 'Ivan',
-        lastName: 'Ivanov',
-        middleName: 'Ivanovich',
-        email: 'iv23SDF4an@243gm3sdfail.com',
-        dateOfBirth: '11.11.2001',
-      },
-      startTime: '2023-11-30 15:00',
-      endTime: '2023-11-30 15:15',
-      status: 'AVAILABLE',
-    },
-  ];
+    const [appointments, setAppointments] = useState([]);
+    
+    useEffect(() => {
+      const getAppointments = async () => {
+        try {
+          const appointments = await fetchClientOwnAppointments();
+          if (appointments != null) {
+            setAppointments(appointments);
+          }
+        } catch(error) {
+          console.error("error fetching appointments")
+        }
+      };
+      getAppointments();
+    });
 
   return (
     <div>

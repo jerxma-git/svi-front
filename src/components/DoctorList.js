@@ -1,31 +1,26 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { fetchDoctors } from '../api/doctors';
 
 const DoctorList = () => {
 
     // todo rm
-    const doctors = [
-    {
-      id: 1,
-      firstName: 'John',
-      lastName: 'Doe',
-      middleName: 'M',
-      email: 'john.doe@example.com',
-      dateOfBirth: '01.01.1980',
-      positionId: 1,
-      positionName: 'Cardiologist',
-    },
-    {
-      id: 2,
-      firstName: 'Jane',
-      lastName: 'Smith',
-      middleName: 'A',
-      email: 'jane.smith@example.com',
-      dateOfBirth: '02.02.1990',
-      positionId: 2,
-      positionName: 'Orthopedic Surgeon',
-    },
-  ];
+  const [doctors, setDoctors] = useState([]);
+
+  useEffect(() => {
+    const getDoctors = async () => {
+      try {
+        const doctors = await fetchDoctors();
+        if (doctors != null) {
+          setDoctors(doctors);
+        }
+
+      } catch(error) {
+        console.error("error fetching doctors");
+      }
+    }
+    getDoctors();
+  });
 
   return (
     <div>
