@@ -5,20 +5,42 @@ const AppointmentList = () => {
 
     // todo rm
     const [appointments, setAppointments] = useState([]);
-    
+    const [dateRange, setDateRange] = useState(null);
     useEffect(() => {
       const getAppointments = async () => {
         try {
-          const appointments = await fetchClientOwnAppointments();
+          let start, end;
+          if (dateRange === null) {
+            start = new Date();
+            end = new Date();
+          } else {
+            start = dateRange['start'];
+            end = dateRange['end'];
+          }
+          
+          const appointments = await fetchClientOwnAppointments(start, end);
           if (appointments != null) {
             setAppointments(appointments);
           }
         } catch(error) {
-          console.error("error fetching appointments")
+          console.error("error fetching appointments", error);
         }
       };
       getAppointments();
-    });
+    }, [dateRange]);
+
+
+  // temporary: to be removed/refined
+  function toggleDateRange() {
+    if (dateRange === null) {
+      setDateRange({
+        "start": new Date(),
+        "end": new Date().setDate(new Date().getDate() + 7),
+      });
+    } else {
+      setDateRange(null);
+    }
+  }
 
   return (
     <div>
@@ -32,6 +54,7 @@ const AppointmentList = () => {
           </li>
         ))}
       </ul>
+      <button onclick={toggleDateRange}></button>
     </div>
   );
 };

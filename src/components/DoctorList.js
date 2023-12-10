@@ -20,7 +20,7 @@ const DoctorList = () => {
       }
     }
     getDoctors();
-  });
+  }, []);
 
   return (
     <div>
