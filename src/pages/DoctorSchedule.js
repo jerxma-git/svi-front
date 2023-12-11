@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { fetchDoctorInfo, fetchDoctorAppointments } from '../api/doctors'; // Mocked API functions for fetching doctor info and appointments
+import { useParams } from 'react-router-dom';
 
-const DoctorSchedule = ({ doctorId }) => {
-
+const DoctorSchedule = () => {
+  const { doctorId } = useParams()
   const [doctorInfo, setDoctorInfo] = useState(null);
   const [appointments, setAppointments] = useState([]);
 
@@ -14,7 +15,10 @@ const DoctorSchedule = ({ doctorId }) => {
           setDoctorInfo(doctorInformation);
         }
 
-        const doctorAppointments = await fetchDoctorAppointments(doctorId);
+        // todo: remove constants -> set values from ui
+        const startDate = "20231010"
+        const endDate = "20231212"
+        const doctorAppointments = await fetchDoctorAppointments(doctorId, startDate, endDate);
         if (doctorAppointments != null) {
           setAppointments(doctorAppointments);
         }
@@ -45,7 +49,9 @@ const DoctorSchedule = ({ doctorId }) => {
       <ul>
         {appointments.map((appointment) => (
           <li key={appointment.id}>
-            <p>Client: {`${appointment.clientInfo.firstName} ${appointment.clientInfo.lastName}`}</p>
+            { appointment.clientInfo &&
+                <p>Client: {`${appointment.clientInfo.firstName} ${appointment.clientInfo.lastName}`}</p>
+            }
             <p>Start Time: {appointment.startTime}</p>
             <p>End Time: {appointment.endTime}</p>
           </li>
