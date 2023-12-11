@@ -1,8 +1,8 @@
 import axios from "axios";
 import { BASE_URL, getAuthHeader } from "./base";
 
-export const fetchDoctorAppointments = async (doctorId) => {
-  const request = `${BASE_URL}/appointments/user/${doctorId}`;
+export const fetchDoctorAppointments = async (doctorId, startDate, endDate) => {
+  const request = `${BASE_URL}/appointments/user/${doctorId}?startDate=${startDate}&endDate=${endDate}`;
   try {
     const response = await axios.get(request, {
       headers: getAuthHeader()
