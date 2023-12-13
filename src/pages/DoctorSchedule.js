@@ -1,35 +1,26 @@
 import React, { useState, useEffect } from 'react';
 import { fetchDoctorInfo, fetchDoctorAppointments } from '../api/doctors'; // Mocked API functions for fetching doctor info and appointments
 import { useParams } from 'react-router-dom';
+import { ScheduleViewer } from '../components/doctor-schedule/ScheduleViewer';
 
 const DoctorSchedule = () => {
   const { doctorId } = useParams()
   const [doctorInfo, setDoctorInfo] = useState(null);
-  const [appointments, setAppointments] = useState([]);
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fillDoctorInfo = async () => {
       try {
         const doctorInformation = await fetchDoctorInfo(doctorId);
         if (doctorInformation != null) {
           setDoctorInfo(doctorInformation);
         }
-
-        // todo: remove constants -> set values from ui
-        const startDate = "20231010"
-        const endDate = "20231212"
-        const doctorAppointments = await fetchDoctorAppointments(doctorId, startDate, endDate);
-        if (doctorAppointments != null) {
-          setAppointments(doctorAppointments);
-        }
-        
       } catch (error) {
-        console.error('Error fetching doctor data:', error);
+        console.error("Failed to fetch doctor's information:", error);
       }
-    };
+    } 
 
-    fetchData();
-  }, [doctorId]);
+    fillDoctorInfo();
+  }, [doctorId]);  
 
   return (
 
@@ -43,21 +34,10 @@ const DoctorSchedule = () => {
         </div>
       )}
 
-    {/* TODO: make a component with appointment slots and replace this bs with it */}
-
-      <h3>Schedule</h3>
-      <ul>
-        {appointments.map((appointment) => (
-          <li key={appointment.id}>
-            { appointment.clientInfo &&
-                <p>Client: {`${appointment.clientInfo.firstName} ${appointment.clientInfo.lastName}`}</p>
-            }
-            <p>Start Time: {appointment.startTime}</p>
-            <p>End Time: {appointment.endTime}</p>
-          </li>
-        ))}
-      </ul>
+    <ScheduleViewer doctorId={doctorId}/>
     </div>
+
+    
   );
 };
 
