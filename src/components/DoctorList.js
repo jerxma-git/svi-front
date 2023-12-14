@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { fetchDoctors } from '../api/doctors';
+import doctor_face from "../images/doctor.png";
 
 const DoctorList = () => {
 
@@ -25,16 +26,14 @@ const DoctorList = () => {
   return (
     <div>
       <h1>Registered Doctors</h1>
-      
+
     <ul>
     {doctors.map((doctor) => (
         <li key={doctor.id}>
-        <strong>ID:</strong> {doctor.id}<br />
-        <strong>Name:</strong> {`${doctor.firstName} ${doctor.middleName} ${doctor.lastName}`}<br />
-        <strong>Email:</strong> {doctor.email}<br />
-        <strong>Date of Birth:</strong> {doctor.dateOfBirth}<br />
-        <strong>Position:</strong> {doctor.positionName}<br />
-
+          <img src={doctor_face} alt="Italian Trulli" width="200" height="200"/>
+          <h2>Dr. {doctor.firstName} {doctor.lastName}</h2>
+          <h3>{doctor.positionName}</h3>
+          <p>{doctor.experience} years experience</p>
         {/* Button for redirection */}
         <Link to={`/schedule/${doctor.id}`}>
             <button>View schedule</button>

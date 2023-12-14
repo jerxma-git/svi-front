@@ -1,29 +1,23 @@
 import React, { useEffect, useState } from 'react';
 import { ScheduleDay } from './ScheduleDay';
 import { fetchDoctorAppointments, toDashedDateStr, toSimpleDateStr } from '../../api/doctors';
-import { datePlusDays } from '../../api/datetime';
-import app from "../../App";
+import {parseDate} from "../../api/base";
 
 const ScheduleViewer = ({doctorId}) => {
-    const currentDate = new Date()
-
-    const [wrappedSlots, setWrappedSlots] = useState({});
-    const [dateRangeType, setDateRangeType] = useState("day");
-
-    const [date, setDate] = useState("14122023")
+    const [date, setDate] = useState("2023-12-14")
     const [appointments, setAppointments] = useState(<ScheduleDay/>)
 
     useEffect(() => {
-        console.log(date)
         getAppointments();
       }, [doctorId, date]);
 
     const getAppointments = () => {
-      fetchDoctorAppointments(doctorId, date, date).then((appointments) => {
+      let parsedDate = parseDate(date)
+      fetchDoctorAppointments(doctorId, parsedDate, parsedDate).then((appointments) => {
         console.log(appointments.data)
         setAppointments(<ScheduleDay date={date} slots={appointments.data}/>);
       }).catch(() => {
-        console.log("here")
+        console.error("here")
       })
     }
 

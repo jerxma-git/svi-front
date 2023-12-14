@@ -9,7 +9,7 @@ const ScheduleSlot = ({slot}) => {
 
     return (
         <div className={"slot " + availabilityClass[slot.status]} >
-            <p>{slot.startTime.su} - {slot.endTime}</p>
+            <p>{slot.startTime.substring(0, 5)} - {slot.endTime.substring(0, 5)}</p>
         </div>
     )
 } 
