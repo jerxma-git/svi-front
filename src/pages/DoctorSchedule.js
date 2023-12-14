@@ -28,15 +28,14 @@ const DoctorSchedule = () => {
     <div>
       {doctorInfo && (
       <div>
-        <div>
-          <img src={doctor_face} alt="Italian Trulli" width="400" height="400"/>
-          <h2>Dr. {doctorInfo.firstName} {doctorInfo.lastName}, {doctorInfo.positionName}</h2>
-          <p>{doctorInfo.experience} years experience</p>
-          <h2>About me</h2>
-          <p>{doctorInfo.description}</p>
-        </div>
-        <div>
-          <ScheduleViewer doctorId={doctorId}/>
+        <div className="Doctor-info-block">
+          <img className="Doctor-info-img" src={doctor_face} alt="Italian Trulli"/>
+          <div className="Doctor-info-text">
+            <h1>Dr. {doctorInfo.firstName} {doctorInfo.lastName}, {doctorInfo.positionName}</h1>
+            <p className="Doctor-info-text-small">{doctorInfo.experience} years experience</p>
+            <h1>About me</h1>
+            <p className="Doctor-info-text-small">{doctorInfo.description}</p>
+          </div>
         </div>
       </div>)
       }

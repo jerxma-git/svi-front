@@ -36,68 +36,70 @@ const Register = () => {
   }
 
   return (
-    <div>
-      <form onSubmit={handleRegistration}>
-        <label>Email
-          <input
+    <div className="Registration-block">
+      <form className="Registration-form" onSubmit={handleRegistration}>
+        <label className="Registration-form-label">Email
+          <input className="Registration-form-input"
             type="text"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
           />
         </label>
         <br />
-        <label>Password
-          <input
+        <label className="Registration-form-label">Password
+          <input className="Registration-form-input"
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
         </label>
         <br />
-        <label>First Name
-          <input
+        <label className="Registration-form-label">First Name
+          <input className="Registration-form-input"
             type="text"
             value={firstName}
             onChange={(e) => setFirstName(e.target.value)}
           />
         </label>
         <br />
-        <label>Last Name
-          <input
+        <label className="Registration-form-label">Last Name
+          <input className="Registration-form-input"
             type="text"
             value={lastName}
             onChange={(e) => setLastName(e.target.value)}
           />
         </label>
         <br />
-        <label>Middle Name
-          <input
+        <label className="Registration-form-label">Middle Name
+          <input className="Registration-form-input"
             type="text"
             value={middleName}
             onChange={(e) => setMiddleName(e.target.value)}
           />
         </label>
         <br />
-        <label>Date Of Birth
-          <input
+        <label className="Registration-form-label">Date Of Birth
+          <input className="Registration-form-input"
             type="date"
             value={dateOfBirth}
             onChange={(e) => setDateOfBirth(e.target.value)}
           />
         </label>
         <br />
-        <label>Role
-          <input
+        <label className="Registration-form-label">Role
+          <input className="Registration-form-input"
             type="text"
             value={role}
             onChange={(e) => setRole(e.target.value)}
           />
         </label>
-        <button type="submit">Register</button>
+        <div className="Registration-form-button">
+          <button className="Registration-form-button-click" type="submit">Register</button>
+        </div>
       </form>
-      <div>
+      <div className="Registration-login">
         <p>Already have an account?</p>
-        <button onClick={login}>Log in</button>
+        <button className="Registration-login-button" onClick={login}>Log in</button>
       </div>
     </div>
   )
