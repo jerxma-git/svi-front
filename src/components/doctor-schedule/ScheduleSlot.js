@@ -9,11 +9,7 @@ const ScheduleSlot = ({slot}) => {
 
     return (
         <div className={"slot " + availabilityClass[slot.status]} >
-            <span>{slot.startTime} </span>
-            
-            {/* todo: remove, add color*/}
-            <span>{slot.status}</span> 
-
+            <p>{slot.startTime.su} - {slot.endTime}</p>
         </div>
     )
 } 
