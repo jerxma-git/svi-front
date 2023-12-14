@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { fetchDoctorInfo, fetchDoctorAppointments } from '../api/doctors'; // Mocked API functions for fetching doctor info and appointments
 import { useParams } from 'react-router-dom';
 import { ScheduleViewer } from '../components/doctor-schedule/ScheduleViewer';
+import doctor_face from '../images/doctor.png'
 
 const DoctorSchedule = () => {
   const { doctorId } = useParams()
@@ -26,18 +27,22 @@ const DoctorSchedule = () => {
 
     <div>
       {doctorInfo && (
+      <div>
         <div>
-          <h2>{`${doctorInfo.firstName} ${doctorInfo.lastName}'s Schedule`}</h2>
-          <p>Email: {doctorInfo.email}</p>
-          <p>Date of Birth: {doctorInfo.dateOfBirth}</p>
-          <p>Position: {doctorInfo.positionName}</p>
+          <img src={doctor_face} alt="Italian Trulli" width="400" height="400"/>
+          <h2>Dr. {doctorInfo.firstName} {doctorInfo.lastName}, {doctorInfo.positionName}</h2>
+          <p>{doctorInfo.experience} years experience</p>
+          <h2>About me</h2>
+          <p>{doctorInfo.description}</p>
         </div>
-      )}
-
-    <ScheduleViewer doctorId={doctorId}/>
+        <div>
+          <ScheduleViewer doctorId={doctorId}/>
+        </div>
+      </div>)
+      }
     </div>
 
-    
+
   );
 };
 

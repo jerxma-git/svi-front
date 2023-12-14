@@ -2,77 +2,46 @@ import React, { useEffect, useState } from 'react';
 import { ScheduleDay } from './ScheduleDay';
 import { fetchDoctorAppointments, toDashedDateStr, toSimpleDateStr } from '../../api/doctors';
 import { datePlusDays } from '../../api/datetime';
+import app from "../../App";
 
 const ScheduleViewer = ({doctorId}) => {
+    const currentDate = new Date()
 
     const [wrappedSlots, setWrappedSlots] = useState({});
     const [dateRangeType, setDateRangeType] = useState("day");
 
-    const DEFAULT_DATE_RANGE = {
-        "start": new Date(), // today
-        "end": datePlusDays(new Date(), 1), // tomorrow
-    }
-
-
-    const [dateRange, setDateRange] = useState(DEFAULT_DATE_RANGE);
-   
+    const [date, setDate] = useState("14122023")
+    const [appointments, setAppointments] = useState(<ScheduleDay/>)
 
     useEffect(() => {
-        const fetchData = async () => {
-          try {
-            const startDate = toSimpleDateStr(dateRange.start);
-            const endDate = toSimpleDateStr(dateRange.end);
-            const appointments = await fetchDoctorAppointments(doctorId, startDate, endDate);
+        console.log(date)
+        getAppointments();
+      }, [doctorId, date]);
 
-            setWrappedSlots(appointments);
-          } catch (error) {
-            console.error("Error fetching doctor's schedule:", error);
-          }
-        };
-        
-        fetchData();
-      }, [doctorId, dateRange]);
-
-
-    const getCurrentWeekRange = () => {
-        let monday = new Date();
-        monday.setDate(monday.getDate() - (monday.getDay() + 6) % 7); 
-        return {
-            "start": monday,
-            "end": datePlusDays(monday, 7)
-        }
-    }
-
-    const toggleMode = () => {
-        if (dateRangeType === "day") {
-            setDateRangeType("week");
-            setDateRange(getCurrentWeekRange());
-        } else {
-            setDateRangeType("day");
-            setDateRange(DEFAULT_DATE_RANGE);
-        }
+    const getAppointments = () => {
+      fetchDoctorAppointments(doctorId, date, date).then((appointments) => {
+        console.log(appointments.data)
+        setAppointments(<ScheduleDay date={date} slots={appointments.data}/>);
+      }).catch(() => {
+        console.log("here")
+      })
     }
 
     return (
         <div>
-            <button onClick={toggleMode}>toggle</button>
-            {(() => {
-                switch (dateRangeType) {
-                case 'day':
-                    let slots = wrappedSlots[toDashedDateStr(dateRange.start)] ?? [];
-                    return <ScheduleDay date={dateRange.start} slots={slots}/>;
-                case 'week':
-                    return (
-                    <div>
-                        {[...Array(7)].map((_, index) => datePlusDays(dateRange.start, index)).map((date, index) => {
-                            return <ScheduleDay key={index} date={date} slots={wrappedSlots[toDashedDateStr(date)] ?? []} />;
-                        })}
-                    </div>
-                    );
-                default:
-                    return "";
-                }
-            })()}
+          <form onSubmit={getAppointments}>
+            <label>
+              Day
+              <input
+                type="date"
+                value={date}
+                onChange={(e) => setDate(e.target.value)}
+              />
+            </label>
+          </form>
+          <div>
+            {appointments}
+          </div>
         </div>
     );
 }

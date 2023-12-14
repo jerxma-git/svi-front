@@ -1,18 +1,11 @@
 import axios from "axios";
-import { BASE_URL, getAuthHeader } from "./base";
+import {BASE_URL, getAuthHeader} from "./base";
 
-export const fetchDoctorAppointments = async (doctorId, startDate, endDate, parse=true) => {
+export const fetchDoctorAppointments = async (doctorId, startDate, endDate, parse = true) => {
   const request = `${BASE_URL}/appointments/user/${doctorId}?startDate=${startDate}&endDate=${endDate}`;
-  try {
-    const response = await axios.get(request, {
-      headers: getAuthHeader()
-    });
-    return parse ? wrapByDate(response.data) : response.data;
-  } catch(error) {
-    // TODO handle error
-    console.error("error fetching doctor appointments data", error);
-    return null;
-  }
+  return axios.get(request, {
+    headers: getAuthHeader()
+  });
 };
 
 const wrapByDate = (appointments) => {
@@ -56,7 +49,7 @@ export const fetchDoctorInfo = async (doctorId) => {
       headers: getAuthHeader()
     });
     return response.data;
-  } catch(error) {
+  } catch (error) {
     // TODO handle error
     console.error("error fetching doctor info", error);
     return null;
@@ -70,7 +63,7 @@ export const fetchDoctors = async () => {
       headers: getAuthHeader()
     });
     return response.data;
-  } catch(error) {
+  } catch (error) {
     // TODO handle error
     console.error("error fetching doctor info", error);
     return null;

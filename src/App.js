@@ -8,6 +8,7 @@ import Login from './components/auth/Login';
 import DoctorSchedule from './pages/DoctorSchedule';
 import Register from "./components/auth/Register";
 import {ProtectedRoute} from "./components/auth/ProtectedRoute";
+import styles from './App.css'
 
 function App() {
   return (
