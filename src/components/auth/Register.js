@@ -22,6 +22,8 @@ const Register = () => {
       localStorage.setItem("userId", userId);
       localStorage.setItem("username", username);
       localStorage.setItem("password", password);
+      console.log(data.data)
+      localStorage.setItem("role", data.data.role);
       const authkey = window.btoa(`${username}:${password}`);
       localStorage.setItem("authkey", authkey)
 

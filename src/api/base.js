@@ -50,6 +50,7 @@ export function logOut() {
   localStorage.removeItem("username")
   localStorage.removeItem("password")
   localStorage.removeItem("authkey")
+  localStorage.removeItem("role")
 }
 
 export {getAuthHeader, authenticate, register, BASE_URL}

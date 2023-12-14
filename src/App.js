@@ -9,6 +9,7 @@ import DoctorSchedule from './pages/DoctorSchedule';
 import Register from "./components/auth/Register";
 import {ProtectedRoute} from "./components/auth/ProtectedRoute";
 import styles from './App.css'
+import Profile from "./components/Profile";
 
 function App() {
   return (
@@ -33,6 +34,11 @@ function App() {
             <Route path="/schedule/:doctorId" element={
               <ProtectedRoute>
                 <DoctorSchedule/>
+              </ProtectedRoute>
+            }/>
+            <Route path="/profile/:userId" element={
+              <ProtectedRoute>
+                <Profile/>
               </ProtectedRoute>
             }/>
           </Routes>

@@ -18,6 +18,8 @@ const Login = ({ onLogin, onRegistered }) => {
         localStorage.setItem("userId", userId);
         localStorage.setItem("username", username);
         localStorage.setItem("password", password);
+        localStorage.setItem("role", data.data.role)
+        console.log(data.data)
         const authkey = window.btoa(`${username}:${password}`);
         localStorage.setItem("authkey", authkey)
 
