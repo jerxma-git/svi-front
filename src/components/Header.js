@@ -13,13 +13,19 @@ const Header = () => {
   }
 
   return (
-    <header>
-      <h1>Doctor Appointment Service</h1>
-      <Navbar/>
-      <p>Logged in as {username}</p>
-      { isAuthenticate() &&
-        <button onClick={onLogOut}>Log out</button>
-      }
+    <header className="App-header">
+      <h1 className="App-name">Doctor Appointment Service</h1>
+        <div className="App-header-info">
+          <Navbar/>
+          { isAuthenticate() &&
+            <div className="App-user-icon">
+              <p className="App-user-name">{username}</p>
+            </div>
+          }
+          { isAuthenticate() &&
+              <button className="App-logout-button" onClick={onLogOut}>Log out</button>
+          }
+        </div>
     </header>
   );
 };

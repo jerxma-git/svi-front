@@ -1,3 +1,13 @@
+.main {
+  height: 850px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: static;
+  top: 0;
+  background: #EEEEEE;
+}
+
 .App {
   text-align: center;
 }
@@ -14,14 +24,84 @@
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  height: 75px;
+  gap: 75px;
+  box-shadow: 0 4px 4px rgba(199, 199, 199, 0.5);
+  background: #FFFFFF;
+  z-index: 1000;
+}
+
+.App-name {
+  margin-left: 50px;
+  position: sticky;
+  display: flex;
+}
+
+.App-header-info {
+  display: flex;
+  flex-direction: row;
+  margin-left: auto;
+  margin-right: 50px;
+  position: sticky;
+}
+
+.App-nav {
+  display: flex;
+  margin-right: 50px;
+  position: sticky;
+}
+
+.App-nav-bar {
+  display: flex;
+  flex-direction: row;
+  gap: 50px;
+}
+
+.App-nav-bar-item {
+  position: sticky;
+}
+
+.App-user-icon {
+  margin-right: 50px;
+  position: sticky;
+  background-color: #EEEEEE;
+  padding-left: 10px;
+  padding-right: 10px;
+  border: #C2C2C2 1px solid;
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+.App-username {
+}
+
+.App-logout-button {
+  background-color: #EEEEEE;
+  position: sticky;
+  width: 125px;
+  border-radius: 10px;
+  border: #C2C2C2 1px solid;
+  font-weight: 600;
+}
+
+.App-logout-button:hover {
+  background-color: #EEEEEE;
+}
+
+.App-footer {
+  height: 50px;
+  display: flex;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  flex-direction: row;
+  bottom: 0;
+  box-shadow: 0 4px 4px rgba(199, 199, 199, 0.5);
+  background: #FFFFFF;
 }
 
 .App-link {
@@ -35,4 +115,193 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.Registration-block {
+  margin-top: 50px;
+  width: 350px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.Registration-form-label {
+  display: flex;
+  margin-left: 5px;
+  font-weight: 600;
+}
+
+.Registration-form-input {
+  margin-left: auto;
+  margin-right: 5px;
+  border-radius: 5px;
+  border: #C2C2C2 1px solid;
+}
+
+.Registration-form-button {
+  margin-top: 25px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.Registration-form-button-click {
+  margin-left: 75px;
+  margin-right: 75px;
+  height: 40px;
+  width: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #FFFFFF;
+  border-radius: 5px;
+  border: #C2C2C2 1px solid;
+  font-weight: 600;
+}
+
+.Registration-form-button-click:hover {
+  background-color: #D9D9D9;
+  transition: 0.3s ease;
+}
+
+.Registration-form-button-click:active {
+  background-color: #bdbdbd;
+}
+
+.Registration-login {
+  margin-top: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.Registration-login-button {
+  margin-left: 75px;
+  margin-right: 75px;
+  height: 40px;
+  width: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #FFFFFF;
+  border-radius: 5px;
+  border: #C2C2C2 1px solid;
+  font-weight: 600;
+}
+
+.Registration-login-button:hover {
+  background-color: #D9D9D9;
+  transition: 0.3s ease;
+}
+
+.Registration-login-button:active {
+  background-color: #bdbdbd;
+}
+
+.Login-block {
+  margin-top: 50px;
+  width: 350px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.Login-form-label {
+  display: flex;
+  margin-left: 5px;
+  font-weight: 600;
+}
+
+.Login-form-label-input {
+  margin-left: auto;
+  margin-right: 5px;
+  border-radius: 5px;
+  border: #C2C2C2 1px solid;
+}
+
+.Login-form-button {
+  margin-top: 25px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.Login-form-button-click {
+  margin-left: 75px;
+  margin-right: 75px;
+  height: 40px;
+  width: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #FFFFFF;
+  border-radius: 5px;
+  border: #C2C2C2 1px solid;
+  font-weight: 600;
+}
+
+.Login-form-button-click:hover {
+  background-color: #D9D9D9;
+  transition: 0.3s ease;
+}
+
+.Login-form-button-click:active {
+  background-color: #bdbdbd;
+}
+
+.Login-registration {
+  margin-top: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.Login-registration-button {
+  margin-left: 75px;
+  margin-right: 75px;
+  height: 40px;
+  width: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #FFFFFF;
+  border-radius: 5px;
+  border: #C2C2C2 1px solid;
+  font-weight: 600;
+}
+
+.Login-registration-button:hover {
+  background-color: #D9D9D9;
+  transition: 0.3s ease;
+}
+
+.Login-registration-button:active {
+  background-color: #bdbdbd;
+}
+
+.Login-form-error {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+
+.Doctor-info-block {
+  display: flex;
+  margin-top: 50px;
+  width: 1000px;
+  background-color: #FFFFFF;
+  flex-direction: row;
+  border-radius: 15px;
+  border: #C2C2C2 1px solid;
+}
+
+.Doctor-info-img {
+  display: flex;
+  margin: 20px;
+  border-radius: 15px;
+  border: #C2C2C2 1px solid;
+}
+
+.Doctor-info-text-small {
+  font-size: large;
 }

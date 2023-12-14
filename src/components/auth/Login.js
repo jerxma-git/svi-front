@@ -33,33 +33,35 @@ const Login = ({ onLogin, onRegistered }) => {
   }
 
   return (
-      <div>
-          <form onSubmit={handleLogin}>
-              <label>
+      <div className="Login-block">
+          <form className="Login-form" onSubmit={handleLogin}>
+              <label className="Login-form-label">
                   Username:
-                  <input
+                  <input className="Login-form-label-input"
                       type="text"
                       value={username}
                       onChange={(e) => setUsername(e.target.value)}
                   />
               </label>
               <br />
-              <label>
+              <label className="Login-form-label">
                   Password:
-                  <input
+                  <input className="Login-form-label-input"
                       type="password"
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
                   />
               </label>
               <br />
-              <button type="submit">Login</button>
+              <div className="Login-form-button">
+                  <button className="Login-form-button-click" type="submit">Login</button>
+              </div>
 
-              {error && <p style={{ color: 'red' }}>{error}</p>}
+              {error && <p className="Login-form-error" style={{  color: 'red' }}>{error}</p>}
           </form>
-          <div>
+          <div className="Login-registration">
               <p>Don't have an account yet?</p>
-              <button onClick={register}>Register</button>
+              <button className="Login-registration-button" onClick={register}>Register</button>
           </div>
       </div>
   );
