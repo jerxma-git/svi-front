@@ -37,6 +37,9 @@ const DoctorSchedule = () => {
             <p className="Doctor-info-text-small">{doctorInfo.description}</p>
           </div>
         </div>
+        <div>
+          <ScheduleViewer doctorId={doctorId}/>
+        </div>
       </div>)
       }
     </div>
