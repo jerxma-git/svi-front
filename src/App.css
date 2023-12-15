@@ -77,6 +77,15 @@
   font-weight: 600;
 }
 
+.App-user-icon:hover {
+  background-color: #D9D9D9;
+  transition: 0.3s ease;
+}
+
+.App-user-icon:active {
+  background-color: #bdbdbd;
+}
+
 .App-username {
 }
 
@@ -90,7 +99,12 @@
 }
 
 .App-logout-button:hover {
-  background-color: #EEEEEE;
+  background-color: #D9D9D9;
+  transition: 0.3s ease;
+}
+
+.App-logout-button:active {
+  background-color: #bdbdbd;
 }
 
 .App-footer {
@@ -384,6 +398,15 @@
   font-weight: 600;
 }
 
+.Profile-button:hover {
+  background-color: #D9D9D9;
+  transition: 0.3s ease;
+}
+
+.Profile-button:active {
+  background-color: #bdbdbd;
+}
+
 .Profile-block-delimiter {
   width: 70%;
   border-bottom: 5px solid #C2C2C2;
@@ -461,8 +484,6 @@
   background-color: #bdbdbd;
 }
 
-
-
 .Doctor-schedule-viewer {
   width: 80vw;
   margin: auto 0;
@@ -480,8 +501,7 @@ ul.Doctor-schedule-viewer-day {
   width: 100%;
   list-style-type: none;
   padding: 0;
-  margin: 0;
-  margin-top: 30px;
+  margin: 30px 0 0;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -515,4 +535,63 @@ ul.Doctor-schedule-viewer-day {
 .Doctor-schedule-viewer-day-slot.slot__booked {
   background-color: rgb(66, 66, 66);
   color: white;
+}
+
+.User-info-main {
+  width: 70%;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.User-info-block {
+  width: 70%;
+  background-color: #FFFFFF;
+  border-radius: 15px;
+  border: #C2C2C2 1px solid;
+  display: flex;
+  flex-direction: row;
+}
+
+.User-info-change-data {
+  display: flex;
+  width: 37%;
+  align-items: center;
+  flex-direction: column;
+  margin: 15px auto 0;
+}
+
+.Profile-button-block {
+  display: flex;
+  flex-direction: row;
+  column-gap: 50px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.User-info-form-label {
+  display: flex;
+  font-weight: 600;
+  flex-direction: row;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.User-info-form-input {
+  display: flex;
+  border-radius: 5px;
+  border: #C2C2C2 1px solid;
+  margin-right: 0;
+  margin-left: auto;
+  height: 30px;
+}
+
+.User-info-img {
+  border-radius: 15px;
+  border: #C2C2C2 1px solid;
+  display: flex;
+  height: 350px;
+  width: 300px;
+  margin: auto;
 }

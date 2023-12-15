@@ -94,7 +94,8 @@ const UserInfo = () => {
   }
 
   return (
-    <div>
+    <div className="User-info-main">
+      <h2>Personal information</h2>
       {getRole() === 'CLIENT' &&
         <div>
           <img src={doctor_face} alt="Italian Trulli" width="200" height="200"/>
@@ -135,69 +136,86 @@ const UserInfo = () => {
         </div>
       }
       {getRole() === 'DOCTOR' &&
-        <div>
-          <img src={doctor_face} alt="Italian Trulli" width="200" height="200"/>
-          <input
-            type="text"
-            disabled={disabledState}
-            value={info.firstName}
-            onChange={(e) => {
-              setInfo(Object.assign({}, info, {firstName: `${e.target.value}`}))
-            }}
-          />
-          <input
-            type="text"
-            disabled={disabledState}
-            value={info.lastName}
-            onChange={(e) => {
-              setInfo(Object.assign({}, info, {lastName: `${e.target.value}`}))
-            }}
-          />
-          <input
-            type="text"
-            disabled={disabledState}
-            value={info.middleName}
-            onChange={(e) => {
-              setInfo(Object.assign({}, info, {middleName: `${e.target.value}`}))
-            }}
-          />
-          <input
-            type="text"
-            disabled={disabledState}
-            value={info.experience}
-            onChange={(e) => {
-              setInfo(Object.assign({}, info, {experience: `${e.target.value}`}))
-            }}
-          />
-          <input
-            type="text"
-            disabled={disabledState}
-            value={info.description}
-            onChange={(e) => {
-              setInfo(Object.assign({}, info, {description: `${e.target.value}`}))
-            }}
-          />
-          <input
-            type="text"
-            disabled={disabledState}
-            value={info.positionName}
-            onChange={(e) => {
-              setInfo(Object.assign({}, info, {positionName: `${e.target.value}`}))
-            }}
-          />
-          <input
-            type="date"
-            disabled={disabledState}
-            value={info.dateOfBirth}
-            onChange={(e) => {
-              setInfo(Object.assign({}, info, {dateOfBirth: `${e.target.value}`}))
-            }}
-          />
-          <button onClick={() => setDisabledState(false)}>Edit</button>
-          <button onClick={() => updateDoctor()}>Save</button>
+        <div className="User-info-block">
+          <img className="User-info-img" src={doctor_face} alt="Italian Trulli"/>
+          <div className="User-info-change-data">
+            <label className="User-info-form-label">First Name
+              <input className="User-info-form-input"
+                     type="text"
+                     disabled={disabledState}
+                     value={info.firstName}
+                     onChange={(e) => {
+                       setInfo(Object.assign({}, info, {firstName: `${e.target.value}`}))
+                     }}
+              />
+            </label>
+            <label className="User-info-form-label">Last Name
+              <input className="User-info-form-input"
+                     type="text"
+                     disabled={disabledState}
+                     value={info.lastName}
+                     onChange={(e) => {
+                       setInfo(Object.assign({}, info, {lastName: `${e.target.value}`}))
+                     }}
+              />
+            </label>
+            <label className="User-info-form-label">Middle Name
+              <input className="User-info-form-input"
+                     type="text"
+                     disabled={disabledState}
+                     value={info.middleName}
+                     onChange={(e) => {
+                       setInfo(Object.assign({}, info, {middleName: `${e.target.value}`}))
+                     }}
+              />
+            </label>
+            <label className="User-info-form-label">Experience
+              <input className="User-info-form-input"
+                     type="text"
+                     disabled={disabledState}
+                     value={info.experience}
+                     onChange={(e) => {
+                       setInfo(Object.assign({}, info, {experience: `${e.target.value}`}))
+                     }}
+              />
+            </label>
+            <label className="User-info-form-label">About me
+              <input className="User-info-form-input"
+                     type="text"
+                     disabled={disabledState}
+                     value={info.description}
+                     onChange={(e) => {
+                       setInfo(Object.assign({}, info, {description: `${e.target.value}`}))
+                     }}
+              />
+            </label>
+            <label className="User-info-form-label">Position
+              <input className="User-info-form-input"
+                     type="text"
+                     disabled={disabledState}
+                     value={info.positionName}
+                     onChange={(e) => {
+                       setInfo(Object.assign({}, info, {positionName: `${e.target.value}`}))
+                     }}
+              />
+            </label>
+            <label className="User-info-form-label">Date Of Birth
+              <input className="User-info-form-input"
+                     type="date"
+                     disabled={disabledState}
+                     value={info.dateOfBirth}
+                     onChange={(e) => {
+                       setInfo(Object.assign({}, info, {dateOfBirth: `${e.target.value}`}))
+                     }}
+              />
+            </label>
+            <div className ="Profile-button-block">
+              <button className="Profile-button" onClick={() => setDisabledState(false)}>Edit</button>
+              <button className="Profile-button" onClick={() => updateDoctor()}>Save</button>
+            </div>
+          </div>
         </div>
       }
-
     </div>
   )
 };

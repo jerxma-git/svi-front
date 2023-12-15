@@ -12,18 +12,12 @@ const Profile = () => {
         <button className="Profile-button" onClick={() => setLocation('info')}>Personal information</button>
       </div>
       <div className="Profile-block-delimiter"></div>
-      <div className="User-appointments-block">
         {location === 'appointments' &&
-          <div className="User-appointments-block">
             <UserAppointments/>
-          </div>
         }
         {location === 'info' &&
-          <div>
             <UserInfo/>
-          </div>
         }
-      </div>
     </div>
   );
 };
