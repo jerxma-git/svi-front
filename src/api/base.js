@@ -34,7 +34,7 @@ async function register(credentials) {
     "lastName": credentials.lastName,
     "middleName": credentials.middleName,
     "dateOfBirth": parseDate(credentials.dateOfBirth),
-    "role": credentials.role
+    "role": credentials.role.toUpperCase()
   });
 }
 

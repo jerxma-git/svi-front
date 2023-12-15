@@ -64,11 +64,15 @@ const ScheduleViewer = ({doctorId}) => {
   return (
       <div className="Doctor-schedule-viewer">
         <div className="Doctor-schedule-viewer-head">
-          <span>Available slots</span>
-          <input type="date" value={toHTMLInputDateValueStr(dateRange.start)} onChange={(e) => handleCalendarInput(e.target.value)}></input>
+          <h2>Available slots</h2>
+          <input className="Available-slots-calendar"  type="date" value={toHTMLInputDateValueStr(dateRange.start)} onChange={(e) => handleCalendarInput(e.target.value)}></input>
         </div>
-        
-        <ScheduleDay date={dateRange.start} slots={slots}/>
+        { slots.length !== 0 &&
+          <ScheduleDay date={dateRange.start} slots={slots}/>
+        }
+        { slots.length === 0 &&
+          <p>No available slots for today</p>
+        }
       </div>
   );
 }

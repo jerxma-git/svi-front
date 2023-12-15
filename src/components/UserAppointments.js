@@ -2,6 +2,8 @@ import React, {useEffect, useState} from "react";
 import {BASE_URL, getAuthHeader} from "../api/base";
 import axios from "axios";
 import doctor_face from "../images/doctor.png";
+import client_face from "../images/client.png"
+import free from "../images/free.png"
 
 const UserAppointments = () => {
   const [appointments, setAppointments] = useState([]);
@@ -67,6 +69,10 @@ const UserAppointments = () => {
       { getRole() === "CLIENT" &&
         <div className="User-appointments-block">
           <h2>Your Appointments</h2>
+          { appointments.length === 0 &&
+            <p>You have no appointments</p>
+          }
+          { appointments.length !== 0 &&
           <ul className="User-appointments-list">
             {appointments.map(appointment => (
               <li className="User-appointments-item" key={appointment.id}>
@@ -82,26 +88,41 @@ const UserAppointments = () => {
                 </li>
             ))}
           </ul>
+          }
         </div>
       }
       { getRole() === "DOCTOR" &&
         <div className="User-appointments-block">
           <h2>Your Appointments</h2>
+          { appointments.length === 0 &&
+            <p>You have no appointments</p>
+          }
+          { appointments.length !== 0 &&
           <ul className="User-appointments-list">
             {appointments.map(appointment => (
               <li className="User-appointments-item" key={appointment.id}>
                 <div className="User-appointments-item-img-container">
-                  <img className="User-appointments-item-img" src={doctor_face} alt="Italian Trulli"/>
+                  {appointment.clientInfo &&
+                  <img className="User-appointments-item-img" src={client_face} alt="Italian Trulli"/>
+                  }
+                  {appointment.clientInfo == null &&
+                    <img className="User-appointments-item-img" src={free} alt="Italian Trulli"/>
+                  }
                 </div>
                 <div className="User-appointments-item-info">
-                  {appointment.clientInfo && <p>Client: {`${appointment.clientInfo.firstName} ${appointment.clientInfo.lastName}`}</p>}
+                  {appointment.clientInfo &&
+                    <p>Client: {`${appointment.clientInfo.firstName} ${appointment.clientInfo.lastName}`}</p>
+                  }
                   <p>Start Time: {appointment.startTime}</p>
                   <p>End Time: {appointment.endTime}</p>
+                  {appointment.clientInfo == null &&
                     <button className="User-appointments-item-info-button" onClick={() => closeAppointment(appointment.id)}>Close</button>
+                  }
                 </div>
               </li>
             ))}
           </ul>
+          }
         </div>
       }
     </div>

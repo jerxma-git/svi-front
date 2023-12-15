@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { register } from '../../api/base';
+import Dropdown from 'react-dropdown';
+import 'react-dropdown/style.css'
 
 const Register = () => {
   const [username, setUsername] = useState('');
@@ -11,6 +13,11 @@ const Register = () => {
   const [dateOfBirth, setDateOfBirth] = useState('')
   const [role, setRole] = useState('')
   let navigate = useNavigate()
+
+  const options = [
+    'Client', 'Doctor'
+  ];
+  const defaultOption = options[0]
 
   const handleRegistration = (e) => {
     const credentials = {username, password, firstName, lastName, middleName, dateOfBirth, role}
@@ -40,7 +47,7 @@ const Register = () => {
   return (
     <div className="Registration-block">
       <form className="Registration-form" onSubmit={handleRegistration}>
-        <label className="Registration-form-label">Email
+        <label className="Registration-form-label">Email required
           <input className="Registration-form-input"
             type="text"
             value={username}
@@ -49,7 +56,7 @@ const Register = () => {
         </label>
         <br />
         <label className="Registration-form-label">Password
-          <input className="Registration-form-input"
+          <input className="Registration-form-input" required
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
@@ -57,7 +64,7 @@ const Register = () => {
         </label>
         <br />
         <label className="Registration-form-label">First Name
-          <input className="Registration-form-input"
+          <input className="Registration-form-input" required
             type="text"
             value={firstName}
             onChange={(e) => setFirstName(e.target.value)}
@@ -65,7 +72,7 @@ const Register = () => {
         </label>
         <br />
         <label className="Registration-form-label">Last Name
-          <input className="Registration-form-input"
+          <input className="Registration-form-input" required
             type="text"
             value={lastName}
             onChange={(e) => setLastName(e.target.value)}
@@ -73,7 +80,7 @@ const Register = () => {
         </label>
         <br />
         <label className="Registration-form-label">Middle Name
-          <input className="Registration-form-input"
+          <input className="Registration-form-input" required
             type="text"
             value={middleName}
             onChange={(e) => setMiddleName(e.target.value)}
@@ -81,7 +88,7 @@ const Register = () => {
         </label>
         <br />
         <label className="Registration-form-label">Date Of Birth
-          <input className="Registration-form-input"
+          <input className="Registration-form-input" required
             type="date"
             value={dateOfBirth}
             onChange={(e) => setDateOfBirth(e.target.value)}
@@ -89,11 +96,7 @@ const Register = () => {
         </label>
         <br />
         <label className="Registration-form-label">Role
-          <input className="Registration-form-input"
-            type="text"
-            value={role}
-            onChange={(e) => setRole(e.target.value)}
-          />
+          <Dropdown className="Registration-form-input" options={options} onChange={(e) => setRole(e.value)} value={defaultOption} placeholder="Select an option"/>
         </label>
         <div className="Registration-form-button">
           <button className="Registration-form-button-click" type="submit">Register</button>

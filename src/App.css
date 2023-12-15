@@ -506,6 +506,12 @@ ul.Doctor-schedule-viewer-day {
   color: white;
 }
 
+.Available-slots-calendar {
+  height: 30px;
+  width: 120px;
+  margin: 15px 20px 10px 30px;
+}
+
 .Doctor-schedule-viewer-day-slot.slot__booked {
   background-color: rgb(66, 66, 66);
   color: white;
