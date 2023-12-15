@@ -17,6 +17,21 @@ export const fetchDoctorAppointments = async (doctorId, startDate, endDate, pars
   }
 };
 
+// TODO: merge this method and method about, I have no time for it :(
+export const fetchDoctorAppointmentsByStatus = async (doctorId, startDate, endDate, status, parse=true) => {
+  const request = `${BASE_URL}/appointments/user/${doctorId}/status?startDate=${startDate}&endDate=${endDate}&status=${status}`;
+  try {
+    const response = await axios.get(request, {
+      headers: getAuthHeader()
+    });
+    return parse ? wrapByDate(response.data) : response.data;
+  } catch(error) {
+    // TODO handle error
+    console.error("error fetching doctor appointments data", error);
+    return null;
+  }
+};
+
 const wrapByDate = (appointments) => {
   let wrapped = {};
   for (let appointment of appointments) {

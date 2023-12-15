@@ -1,6 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { ScheduleDay } from './ScheduleDay';
-import { fetchDoctorAppointments, toHTMLInputDateValueStr, toSimpleDateStr } from '../../api/doctors';
+import {
+  fetchDoctorAppointments,
+  fetchDoctorAppointmentsByStatus,
+  toHTMLInputDateValueStr,
+  toSimpleDateStr
+} from '../../api/doctors';
 import {datePlusDays} from "../../api/datetime";
 
 const ScheduleViewer = ({doctorId}) => {
@@ -22,7 +27,7 @@ const ScheduleViewer = ({doctorId}) => {
           const startDate = toSimpleDateStr(dateRange.start);
           const endDate = toSimpleDateStr(dateRange.end);
           // assuming endDate == startDate + 1
-          const appointments = await fetchDoctorAppointments(doctorId, startDate, endDate, false) ?? [];
+          const appointments = await fetchDoctorAppointmentsByStatus(doctorId, startDate, startDate, 'AVAILABLE', false) ?? [];
           setSlots(appointments);
         } catch (error) {
           console.error("Error fetching doctor's schedule:", error);

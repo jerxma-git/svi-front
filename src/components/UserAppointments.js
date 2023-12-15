@@ -39,7 +39,7 @@ const UserAppointments = () => {
     }, {
       headers: getAuthHeader()
     }).catch(err => {
-      console.error("error occurred")
+      alert("You are not allowed to do it")
     })
   }
 
@@ -51,7 +51,7 @@ const UserAppointments = () => {
     }, {
       headers: getAuthHeader()
     }).catch(err => {
-      console.error("error occurred")
+      alert("You are not allowed to do it")
     })
   }
 
@@ -72,7 +72,7 @@ const UserAppointments = () => {
         headers: getAuthHeader()
       }
     ).catch(err => {
-      console.error("error occurred")
+      alert("You are not allowed to do it")
     })
   }
 

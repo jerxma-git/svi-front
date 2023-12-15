@@ -21,7 +21,7 @@ export const bookAppointment = async (appointment) => {
       });
       return response.data;
     } catch(error) {
-      console.error("Couldn't book an appointment", error);
+      alert("Couldn't book an appointment");
       return null;
     }
 };
