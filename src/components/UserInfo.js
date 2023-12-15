@@ -54,11 +54,34 @@ const UserInfo = () => {
       "firstName": info.firstName,
       "middleName": info.middleName,
       "lastName": info.lastName,
-      "positionId": info.positionId,
+      "positionName": info.positionName,
       "description": info.description,
       "experience": info.experience,
       "email": info.email,
       "dateOfBirth": parsedDate
+      }, {
+        headers: getAuthHeader()
+      }
+    ).then(info => {
+      info.data.dateOfBirth = dateToJsFormat(info.data.dateOfBirth)
+      setInfo(info.data)
+    }).catch(() => {
+      console.log("error")
+    })
+  }
+
+  const updateClient = () => {
+    setDisabledState(true)
+    const request = `${BASE_URL}/clients`
+    const parsedDate = parseDate(info.dateOfBirth)
+    console.log("here" + JSON.stringify(info))
+    axios.put(request, {
+        "id": getUserId(),
+        "firstName": info.firstName,
+        "middleName": info.middleName,
+        "lastName": info.lastName,
+        "dateOfBirth": parsedDate,
+        "email": info.email
       }, {
         headers: getAuthHeader()
       }
@@ -75,10 +98,40 @@ const UserInfo = () => {
       {getRole() === 'CLIENT' &&
         <div>
           <img src={doctor_face} alt="Italian Trulli" width="200" height="200"/>
-          <p>First name: {info.firstName}</p>
-          <p>Last name: {info.lastName}</p>
-          <p>Middle name: {info.middleName}</p>
-          <p>Date of birth: {info.dateOfBirth}</p>
+          <input
+            type="text"
+            disabled={disabledState}
+            value={info.firstName}
+            onChange={(e) => {
+              setInfo(Object.assign({}, info, {firstName: `${e.target.value}`}))
+            }}
+          />
+          <input
+            type="text"
+            disabled={disabledState}
+            value={info.lastName}
+            onChange={(e) => {
+              setInfo(Object.assign({}, info, {lastName: `${e.target.value}`}))
+            }}
+          />
+          <input
+            type="text"
+            disabled={disabledState}
+            value={info.middleName}
+            onChange={(e) => {
+              setInfo(Object.assign({}, info, {middleName: `${e.target.value}`}))
+            }}
+          />
+          <input
+            type="date"
+            disabled={disabledState}
+            value={info.dateOfBirth}
+            onChange={(e) => {
+              setInfo(Object.assign({}, info, {dateOfBirth: `${e.target.value}`}))
+            }}
+          />
+          <button onClick={() => setDisabledState(false)}>Edit</button>
+          <button onClick={() => updateClient()}>Save</button>
         </div>
       }
       {getRole() === 'DOCTOR' &&
@@ -127,9 +180,9 @@ const UserInfo = () => {
           <input
             type="text"
             disabled={disabledState}
-            value={info.positionId}
+            value={info.positionName}
             onChange={(e) => {
-              setInfo(Object.assign({}, info, {positionId: `${e.target.value}`}))
+              setInfo(Object.assign({}, info, {positionName: `${e.target.value}`}))
             }}
           />
           <input
