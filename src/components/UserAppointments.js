@@ -85,21 +85,23 @@ const UserAppointments = () => {
             <p>You have no appointments</p>
           }
           { appointments.length !== 0 &&
-          <ul className="User-appointments-list">
-            {appointments.map(appointment => (
-              <li className="User-appointments-item" key={appointment.id}>
-                <div className="User-appointments-item-img-container">
-                  <img className="User-appointments-item-img" src={doctor_face} alt="Italian Trulli"/>
-                </div>
-                <div className="User-appointments-item-info">
-                  <p className="User-appointments-item-info-name"><strong>Doctor:</strong> {`${appointment.doctorInfo.firstName} ${appointment.doctorInfo.lastName}`}</p>
-                  <p><strong>Start Time:</strong> {appointment.startTime}</p>
-                  <p><strong>End Time</strong> {appointment.endTime}</p>
-                  <button className="User-appointments-item-info-button" onClick={() => cancelAppointment(appointment.id)}>Cancel</button>  
-                </div>
-                </li>
-            ))}
-          </ul>
+              <div className="User-appointments-block-list">
+                <ul className="User-appointments-list">
+                  {appointments.map(appointment => (
+                      <li className="User-appointments-item" key={appointment.id}>
+                        <div className="User-appointments-item-img-container">
+                          <img className="User-appointments-item-img" src={doctor_face} alt="Italian Trulli"/>
+                        </div>
+                        <div className="User-appointments-item-info">
+                          <p className="User-appointments-item-info-name"><strong>Doctor:</strong> {`${appointment.doctorInfo.firstName} ${appointment.doctorInfo.lastName}`}</p>
+                          <p><strong>Start Time:</strong> {appointment.startTime}</p>
+                          <p><strong>End Time</strong> {appointment.endTime}</p>
+                          <button className="User-appointments-item-info-button" onClick={() => cancelAppointment(appointment.id)}>Cancel</button>
+                        </div>
+                      </li>
+                  ))}
+                </ul>
+              </div>
           }
         </div>
       }
@@ -110,33 +112,35 @@ const UserAppointments = () => {
             <p>You have no appointments</p>
           }
           { appointments.length !== 0 &&
-          <ul className="User-appointments-list">
-            {appointments.map(appointment => (
-              <li className="User-appointments-item" key={appointment.id}>
-                <div className="User-appointments-item-img-container">
-                  {appointment.clientInfo &&
-                  <img className="User-appointments-item-img" src={client_face} alt="Italian Trulli"/>
-                  }
-                  {appointment.clientInfo == null &&
-                    <img className="User-appointments-item-img" src={free} alt="Italian Trulli"/>
-                  }
-                </div>
-                <div className="User-appointments-item-info">
-                  {appointment.clientInfo &&
-                    <p className="User-appointments-item-info-name"><strong>Client:</strong> {`${appointment.clientInfo.firstName} ${appointment.clientInfo.lastName}`}</p>
-                  }
-                  <p><strong>Start Time:</strong> {appointment.startTime}</p>
-                  <p><strong>End Time:</strong> {appointment.endTime}</p>
-                  {appointment.clientInfo == null && appointment.status !== "CLOSED" &&
-                    <button className="User-appointments-item-info-button" onClick={() => closeAppointment(appointment.id)}>Close</button>
-                  }
-                  {appointment.clientInfo == null && appointment.status === "CLOSED" &&
-                    <button className="User-appointments-item-info-button" onClick={() => openAppointment(appointment.id)}>Open</button>
-                  }
-                </div>
-              </li>
-            ))}
-          </ul>
+              <div className="User-appointments-block-list">
+                <ul className="User-appointments-list">
+                  {appointments.map(appointment => (
+                      <li className="User-appointments-item" key={appointment.id}>
+                        <div className="User-appointments-item-img-container">
+                          {appointment.clientInfo &&
+                              <img className="User-appointments-item-img" src={client_face} alt="Italian Trulli"/>
+                          }
+                          {appointment.clientInfo == null &&
+                              <img className="User-appointments-item-img" src={free} alt="Italian Trulli"/>
+                          }
+                        </div>
+                        <div className="User-appointments-item-info">
+                          {appointment.clientInfo &&
+                              <p className="User-appointments-item-info-name"><strong>Client:</strong> {`${appointment.clientInfo.firstName} ${appointment.clientInfo.lastName}`}</p>
+                          }
+                          <p><strong>Start Time:</strong> {appointment.startTime}</p>
+                          <p><strong>End Time:</strong> {appointment.endTime}</p>
+                          {appointment.clientInfo == null && appointment.status !== "CLOSED" &&
+                              <button className="User-appointments-item-info-button" onClick={() => closeAppointment(appointment.id)}>Close</button>
+                          }
+                          {appointment.clientInfo == null && appointment.status === "CLOSED" &&
+                              <button className="User-appointments-item-info-button" onClick={() => openAppointment(appointment.id)}>Open</button>
+                          }
+                        </div>
+                      </li>
+                  ))}
+                </ul>
+              </div>
           }
         </div>
       }
