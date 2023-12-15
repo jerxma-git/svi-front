@@ -67,11 +67,13 @@ const UserAppointments = () => {
                 <div className="User-appointments-item-img-container">
                   <img className="User-appointments-item-img" src={doctor_face} alt="Italian Trulli"/>
                 </div>
-                <p>Doctor: {`${appointment.doctorInfo.firstName} ${appointment.doctorInfo.lastName}`}</p>
-                <p>Start Time: {appointment.startTime}</p>
-                <p>End Time: {appointment.endTime}</p>
-                <button className="User-appointments-item-info-button" onClick={() => cancelAppointment(appointment.id)}>Cancel</button>
-              </li>
+                <div className="User-appointments-item-info">
+                  <p>Doctor: {`${appointment.doctorInfo.firstName} ${appointment.doctorInfo.lastName}`}</p>
+                  <p>Start Time: {appointment.startTime}</p>
+                  <p>End Time: {appointment.endTime}</p>
+                  <button className="User-appointments-item-info-button" onClick={() => cancelAppointment(appointment.id)}>Cancel</button>  
+                </div>
+                </li>
             ))}
           </ul>
         </div>
