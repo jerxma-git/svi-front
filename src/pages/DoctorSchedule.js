@@ -37,7 +37,7 @@ const DoctorSchedule = () => {
             <p className="Doctor-info-text-small">{doctorInfo.description}</p>
           </div>
         </div>
-        <div>
+        <div className="Doctor-schedule">
           <ScheduleViewer doctorId={doctorId}/>
         </div>
       </div>)
