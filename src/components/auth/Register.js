@@ -11,7 +11,7 @@ const Register = () => {
   const [middleName, setMiddleName] = useState('');
   const [lastName, setLastName] = useState('');
   const [dateOfBirth, setDateOfBirth] = useState('')
-  const [role, setRole] = useState('')
+  const [role, setRole] = useState('Client')
   let navigate = useNavigate()
 
   const options = [

@@ -9,9 +9,11 @@ const Navbar = () => {
           <li className="App-nav-bar-item">
             <Link to="/doctors">Doctors</Link>
           </li>
-          <li className="App-nav-item">
-            <Link to="/appointments">Appointments</Link>
-          </li>
+          { false &&
+            <li className="App-nav-item">
+              <Link to="/appointments">Appointments</Link>
+            </li>
+          }
         </ul>
     </nav>
   );

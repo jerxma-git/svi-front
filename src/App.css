@@ -415,6 +415,10 @@
   margin-bottom: 10px;
 }
 
+ul {
+  list-style-type: none;
+}
+
 .User-appointments-block {
   display: flex;
   width: 100%;

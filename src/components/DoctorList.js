@@ -24,7 +24,8 @@ const DoctorList = () => {
   }, []);
 
   return (
-    <div>
+    <div style={{marginLeft: "3%"}}>
+      <h2 style={{textAlign: "center"}}>Our doctors</h2>
     <ul className="Doctors-list-block">
     {doctors.map((doctor) => (
         <li className="Doctors-list-item" key={doctor.id}>

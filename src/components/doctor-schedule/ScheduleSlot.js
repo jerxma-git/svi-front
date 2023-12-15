@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { bookAppointment } from '../../api/appointments';
+import {getRoles} from "@testing-library/react";
 
 const ScheduleSlot = ({slot}) => {
     // todo: rework into removing the slot from the ui (move the logic to ScheduleDay)
@@ -8,8 +9,16 @@ const ScheduleSlot = ({slot}) => {
         "just_booked": "slot__booked",
     };
 
+    const getRole = () => {
+        return localStorage.getItem("role")
+    }
+
 
     const handleClick = (event) => {
+        if (getRole() === "DOCTOR") {
+            alert("Please, log in as client to book appointments")
+            return;
+        }
         let response = bookAppointment(slot);
         if (response === null) {
             alert("something went wrong");

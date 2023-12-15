@@ -43,6 +43,18 @@ const UserAppointments = () => {
     })
   }
 
+  const openAppointment = (id) => {
+    const request = `${BASE_URL}/appointments`;
+    axios.put(request, {
+      "id": id,
+      "status": "AVAILABLE"
+    }, {
+      headers: getAuthHeader()
+    }).catch(err => {
+      console.error("error occurred")
+    })
+  }
+
   const cancelAppointment = (id) => {
     const request = `${BASE_URL}/appointments`;
 
@@ -115,8 +127,11 @@ const UserAppointments = () => {
                   }
                   <p><strong>Start Time:</strong> {appointment.startTime}</p>
                   <p><strong>End Time:</strong> {appointment.endTime}</p>
-                  {appointment.clientInfo == null &&
+                  {appointment.clientInfo == null && appointment.status !== "CLOSED" &&
                     <button className="User-appointments-item-info-button" onClick={() => closeAppointment(appointment.id)}>Close</button>
+                  }
+                  {appointment.clientInfo == null && appointment.status === "CLOSED" &&
+                    <button className="User-appointments-item-info-button" onClick={() => openAppointment(appointment.id)}>Open</button>
                   }
                 </div>
               </li>
