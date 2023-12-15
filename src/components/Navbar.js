@@ -7,7 +7,7 @@ const Navbar = () => {
     <nav className="App-nav">
         <ul className="App-nav-bar">
           <li className="App-nav-bar-item">
-            <Link to="/doctors">Doctors</Link>
+            <Link to="/doctors"><span>Doctors</span></Link>
           </li>
           { false &&
             <li className="App-nav-item">

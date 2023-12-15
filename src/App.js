@@ -13,7 +13,6 @@ import Profile from "./components/Profile";
 
 function App() {
   return (
-    <div>
       <Router>
         <Header/>
         <div className="main">
@@ -45,7 +44,6 @@ function App() {
         </div>
         <Footer/>
       </Router>
-    </div>
   )
 }
 

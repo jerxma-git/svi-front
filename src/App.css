@@ -1,4 +1,12 @@
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
 .main {
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -59,12 +67,44 @@
 .App-nav-bar {
   display: flex;
   flex-direction: row;
-  gap: 50px;
+  /* gap: 50px; */
+  padding: 0;
+  margin: 0;
 }
 
 .App-nav-bar-item {
   position: sticky;
+  
+  background-color: #EEEEEE;
+  border-radius: 10px;
+  border: #C2C2C2 1px solid;
+  font-weight: 600;
+  padding: 5px;
+  font-size: 13.3px;
+
+  /* todo: remove */
+  min-height: 40px;
+
 }
+
+
+/* todo: merge with buttons in navbar */
+.App-nav-bar-item a {
+  height: 100%;
+  display: block;  
+  text-decoration: none;
+  color: black;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.App-nav-bar-item a:visited {
+  color: black;
+}
+/* end */
 
 .App-user-icon {
   margin-right: 50px;
@@ -135,7 +175,7 @@
   width: 350px;
   flex-direction: column;
   align-items: center;
-  height: 850px;
+  /* height: 850px; */
 }
 
 .Registration-form-label {
@@ -217,7 +257,7 @@
   width: 350px;
   flex-direction: column;
   align-items: center;
-  height: 850px;
+  /* height: 850px; */
 }
 
 .Login-form-label {
@@ -433,7 +473,7 @@ ul {
   flex-direction: column;
   align-items: center;
   justify-content: start;
-  height: 850px;
+  /* height: 850px; */
   margin-bottom: 50px;
 }
 
@@ -573,7 +613,7 @@ ul.Doctor-schedule-viewer-day {
   align-items: center;
   display: flex;
   flex-direction: column;
-  height: 850px;
+  /* height: 850px; */
 }
 
 .User-info-block {
