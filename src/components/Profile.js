@@ -6,14 +6,15 @@ const Profile = () => {
   const [location, setLocation] = useState('info')
 
   return (
-    <div>
-      <div>
-        <button onClick={() => setLocation('appointments')}>My appointments</button>
-        <button onClick={() => setLocation('info')}>Personal information</button>
+    <div className="Profile-block">
+      <div className="Profile-tab">
+        <button className="Profile-button" onClick={() => setLocation('appointments')}>My appointments</button>
+        <button className="Profile-button" onClick={() => setLocation('info')}>Personal information</button>
       </div>
-      <div>
+      <div className="Profile-block-delimiter"></div>
+      <div className="User-appointments-block">
         {location === 'appointments' &&
-          <div>
+          <div className="User-appointments-block">
             <UserAppointments/>
           </div>
         }

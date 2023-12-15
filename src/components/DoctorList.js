@@ -25,19 +25,19 @@ const DoctorList = () => {
 
   return (
     <div>
-      <h1>Registered Doctors</h1>
-
-    <ul>
+    <ul className="Doctors-list-block">
     {doctors.map((doctor) => (
-        <li key={doctor.id}>
-          <img src={doctor_face} alt="Italian Trulli" width="200" height="200"/>
-          <h2>Dr. {doctor.firstName} {doctor.lastName}</h2>
-          <h3>{doctor.positionName}</h3>
-          <p>{doctor.experience} years experience</p>
-        {/* Button for redirection */}
-        <Link to={`/schedule/${doctor.id}`}>
-            <button>View schedule</button>
-        </Link>
+        <li className="Doctors-list-item" key={doctor.id}>
+          <img className="Doctor-info-img" src={doctor_face} alt="Italian Trulli"/>
+          <div className="Doctor-info-text">
+            <h2>Dr. {doctor.firstName} {doctor.lastName}</h2>
+            <h3>{doctor.positionName}</h3>
+            <p>{doctor.experience} years experience</p>
+            {/* Button for redirection */}
+            <Link to={`/schedule/${doctor.id}`}>
+              <button className="Doctors-list-item-button">View schedule</button>
+            </Link>
+          </div>
         </li>
     ))}
     </ul>

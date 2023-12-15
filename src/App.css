@@ -302,6 +302,161 @@
   border: #C2C2C2 1px solid;
 }
 
+.Doctor-info-text {
+  height: 100%;
+  width: 100%;
+}
+
 .Doctor-info-text-small {
   font-size: large;
+}
+
+.Doctors-list-block {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  column-gap: 100px;
+  row-gap: 50px;
+  align-items: center;
+  justify-content: start;
+  flex-wrap: wrap;
+  overflow-y: scroll;
+}
+
+.Doctors-list-item {
+  width: 600px;
+  display: flex;
+  flex-direction: row;
+  border-radius: 15px;
+  border: #C2C2C2 1px solid;
+  background-color: #FFFFFF;
+}
+
+.Doctors-list-item-button {
+  margin: 180px 20px auto auto;
+  height: 40px;
+  width: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #FFFFFF;
+  border-radius: 5px;
+  border: #C2C2C2 1px solid;
+  font-weight: 600;
+}
+
+.Doctors-list-item-button:hover {
+  background-color: #D9D9D9;
+  transition: 0.3s ease;
+}
+
+.Doctors-list-item-button:active {
+  background-color: #bdbdbd;
+}
+
+.Profile-block {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 90%;
+  flex-direction: column;
+}
+
+.Profile-tab {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  width: 100%;
+  column-gap: 25px;
+  margin-top: 15px;
+}
+
+.Profile-button {
+  height: 40px;
+  width: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #FFFFFF;
+  border-radius: 5px;
+  border: #C2C2C2 1px solid;
+  font-weight: 600;
+}
+
+.Profile-block-delimiter {
+  width: 70%;
+  border-bottom: 5px solid #C2C2C2;
+  border-radius: 3px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.User-appointments-block {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+}
+
+.User-appointments-list {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  gap: 50px;
+  align-items: center;
+  justify-content: start;
+  flex-wrap: wrap;
+  overflow-y: scroll;
+}
+
+.User-appointments-item {
+  display: flex;
+  flex-direction: row;
+  background-color: #FFFFFF;
+  border-radius: 15px;
+  border: #C2C2C2 1px solid;
+  width: 400px;
+}
+
+.User-appointments-item-img-container {
+  display: flex;
+  height: 40%;
+  width: 40%;
+  padding: 5px;
+}
+
+.User-appointments-item-img {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  border-radius: 15px;
+  border: #C2C2C2 1px solid;
+}
+
+.User-appointments-item-info {
+  display: flex;
+  flex-direction:column;
+  margin-left: 10px;
+  line-height: 5px;
+}
+
+.User-appointments-item-info-button {
+  height: 40px;
+  width: 80px;
+  margin: auto 5px 10px auto;
+  background-color: #FFFFFF;
+  border-radius: 10px;
+  border: #C2C2C2 1px solid;
+  font-weight: 600;
+}
+
+.User-appointments-item-info-button:hover {
+  background-color: #D9D9D9;
+  transition: 0.3s ease;
+}
+
+.User-appointments-item-info-button:active {
+  background-color: #bdbdbd;
 }
