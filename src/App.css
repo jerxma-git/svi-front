@@ -108,7 +108,7 @@
 }
 
 .App-footer {
-  height: 50px;
+  height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -440,14 +440,17 @@
   background-color: #FFFFFF;
   border-radius: 15px;
   border: #C2C2C2 1px solid;
-  width: 400px;
+  width: 500px;
+  height: 200px;
+  padding-left: 10px;
 }
 
 .User-appointments-item-img-container {
   display: flex;
-  height: 40%;
+  height: 80%;
   width: 40%;
-  padding: 5px;
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
 .User-appointments-item-img {
@@ -461,8 +464,13 @@
 .User-appointments-item-info {
   display: flex;
   flex-direction:column;
+  margin-top: 10px;
   margin-left: 10px;
   line-height: 5px;
+}
+
+.User-appointments-item-info-name {
+  font-size: 21px;
 }
 
 .User-appointments-item-info-button {
@@ -552,6 +560,8 @@ ul.Doctor-schedule-viewer-day {
   border: #C2C2C2 1px solid;
   display: flex;
   flex-direction: row;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 .User-info-change-data {

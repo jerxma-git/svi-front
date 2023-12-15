@@ -80,9 +80,9 @@ const UserAppointments = () => {
                   <img className="User-appointments-item-img" src={doctor_face} alt="Italian Trulli"/>
                 </div>
                 <div className="User-appointments-item-info">
-                  <p>Doctor: {`${appointment.doctorInfo.firstName} ${appointment.doctorInfo.lastName}`}</p>
-                  <p>Start Time: {appointment.startTime}</p>
-                  <p>End Time: {appointment.endTime}</p>
+                  <p className="User-appointments-item-info-name"><strong>Doctor:</strong> {`${appointment.doctorInfo.firstName} ${appointment.doctorInfo.lastName}`}</p>
+                  <p><strong>Start Time:</strong> {appointment.startTime}</p>
+                  <p><strong>End Time</strong> {appointment.endTime}</p>
                   <button className="User-appointments-item-info-button" onClick={() => cancelAppointment(appointment.id)}>Cancel</button>  
                 </div>
                 </li>
@@ -111,10 +111,10 @@ const UserAppointments = () => {
                 </div>
                 <div className="User-appointments-item-info">
                   {appointment.clientInfo &&
-                    <p>Client: {`${appointment.clientInfo.firstName} ${appointment.clientInfo.lastName}`}</p>
+                    <p className="User-appointments-item-info-name"><strong>Client:</strong> {`${appointment.clientInfo.firstName} ${appointment.clientInfo.lastName}`}</p>
                   }
-                  <p>Start Time: {appointment.startTime}</p>
-                  <p>End Time: {appointment.endTime}</p>
+                  <p><strong>Start Time:</strong> {appointment.startTime}</p>
+                  <p><strong>End Time:</strong> {appointment.endTime}</p>
                   {appointment.clientInfo == null &&
                     <button className="User-appointments-item-info-button" onClick={() => closeAppointment(appointment.id)}>Close</button>
                   }
