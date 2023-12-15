@@ -44,6 +44,12 @@ const UserAppointments = () => {
   const cancelAppointment = (id) => {
     const request = `${BASE_URL}/appointments`;
 
+    const filteredAppointments = appointments.filter(function (val) {
+      return val.id !== id
+    })
+    console.log(filteredAppointments)
+    setAppointments(filteredAppointments)
+
     axios.put(request, {
         "id": id,
         "status": "AVAILABLE",
