@@ -27,7 +27,7 @@ const DoctorSchedule = () => {
 
     <div>
       {doctorInfo && (
-      <div>
+      <div className="Doctor-info">
         <div className="Doctor-info-block">
           <img className="Doctor-info-img" src={doctor_face} alt="Italian Trulli"/>
           <div className="Doctor-info-text">

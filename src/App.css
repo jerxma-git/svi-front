@@ -1,5 +1,4 @@
 .main {
-  height: 850px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -113,7 +112,6 @@
   align-items: center;
   justify-content: center;
   flex-direction: row;
-  bottom: 0;
   box-shadow: 0 4px 4px rgba(199, 199, 199, 0.5);
   background: #FFFFFF;
 }
@@ -136,6 +134,7 @@
   width: 350px;
   flex-direction: column;
   align-items: center;
+  height: 850px;
 }
 
 .Registration-form-label {
@@ -217,6 +216,7 @@
   width: 350px;
   flex-direction: column;
   align-items: center;
+  height: 850px;
 }
 
 .Login-form-label {
@@ -299,6 +299,13 @@
   display: flex;
 }
 
+.Doctor-info {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  height: 850px;
+}
+
 .Doctor-info-block {
   display: flex;
   margin-top: 50px;
@@ -371,9 +378,9 @@
 .Profile-block {
   display: flex;
   align-items: center;
-  justify-content: center;
   width: 90%;
   flex-direction: column;
+  height: 850px;
 }
 
 .Profile-tab {
