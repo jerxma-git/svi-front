@@ -460,3 +460,53 @@
 .User-appointments-item-info-button:active {
   background-color: #bdbdbd;
 }
+
+
+
+.Doctor-schedule-viewer {
+  width: 80vw;
+  margin: auto 0;
+}
+
+.Doctor-schedule-viewer-head {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  padding: 5px;
+  border-bottom: 2px solid black;
+}
+
+ul.Doctor-schedule-viewer-day {
+  width: 100%;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  margin-top: 30px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  row-gap: 5px;
+  column-gap: 10px;
+}
+
+.Doctor-schedule-viewer-day-slot {
+  width: 100px;
+  padding: 5px;
+  border: 1px solid grey;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Doctor-schedule-viewer-day-slot:hover {
+  background-color: rgb(90, 90, 90);
+  padding: 4px;
+  border: 2px solid black;
+  color: white;
+}
+
+.Doctor-schedule-viewer-day-slot.slot__booked {
+  background-color: rgb(66, 66, 66);
+  color: white;
+}

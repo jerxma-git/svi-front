@@ -2,41 +2,29 @@ import React, { useState } from 'react';
 import { bookAppointment } from '../../api/appointments';
 
 const ScheduleSlot = ({slot}) => {
-
     // todo: rework into removing the slot from the ui (move the logic to ScheduleDay)
     const availabilityClass = {
-        "AVAILABLE": "slot__available",
-        "BOOKED": "slot__booked",
-        "CLOSED": "slot__closed",
+        "default": "slot__available",
+        "just_booked": "slot__booked",
     };
 
 
-    const handleClick = () => {
+    const handleClick = (event) => {
         let response = bookAppointment(slot);
         if (response === null) {
             alert("something went wrong");
             return;
         } 
-        
-        doSmthAfterSuccessfulBooking();
-
+        console.log("booked :))");
+        console.log(this);
+        event.currentTarget.classList.remove(availabilityClass["default"]);
+        event.currentTarget.classList.add(availabilityClass["just_booked"]);
+        event.currentTarget.removeAttribute("onClick");
     }
-
-    // todo: rm
-    function doSmthAfterSuccessfulBooking() {
-        setBooked(true);
-    }
-
-    const [booked, setBooked] = useState(slot.status !== "AVAILABLE");
-
-
 
     return (
-        <div className={"slot " + availabilityClass[slot.status]} onClick={handleClick}>
-            <p>{slot.startTime.substring(0, 5)} - {slot.endTime.substring(0, 5)}</p>
-            
-            <p>{slot.status}</p>
-            {booked && <span> booked:) </span>}
+        <div className={"Doctor-schedule-viewer-day-slot " + availabilityClass["default"]} onClick={handleClick}>
+            <span>{slot.startTime.substring(0, 5)} - {slot.endTime.substring(0, 5)}</span>            
         </div>
     )
 } 

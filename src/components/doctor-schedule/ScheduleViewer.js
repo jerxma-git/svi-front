@@ -62,9 +62,13 @@ const ScheduleViewer = ({doctorId}) => {
   // }
 
   return (
-      <div>
-        <input type="date" value={toHTMLInputDateValueStr(dateRange.start)} onChange={(e) => handleCalendarInput(e.target.value)}></input>
-        <ScheduleDay date={dateRange.start} slots={slots}/>;
+      <div className="Doctor-schedule-viewer">
+        <div className="Doctor-schedule-viewer-head">
+          <span>Available slots</span>
+          <input type="date" value={toHTMLInputDateValueStr(dateRange.start)} onChange={(e) => handleCalendarInput(e.target.value)}></input>
+        </div>
+        
+        <ScheduleDay date={dateRange.start} slots={slots}/>
       </div>
   );
 }
